@@ -177,14 +177,11 @@ public class AlamofireNetworkLogger {
                 var log = String(format: "%d \'%@\' [%.04f]: %@ ", response.statusCode, requestURL.absoluteString, elapsedTime, response.allHeaderFields)
                 
                 guard let data = sessionDelegate[task]?.delegate.data else { break }
-                    
+                
                 do {
                     let jsonObject = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                    let prettyData = try JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)
                     
-                    if let prettyString = String(data: prettyData, encoding: .utf8) {
-                        log.append(prettyString)
-                    }
+                    log.append((jsonObject as! NSDictionary).description)
                 } catch {
                     if let string = String(data: data, encoding: .utf8) {
                         log.append(string)
