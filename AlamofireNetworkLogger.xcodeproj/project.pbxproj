@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		32A121F4A27F32B4840E0620 /* Pods_AlamofireNetworkLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60C4662C72C9865C38556DE1 /* Pods_AlamofireNetworkLogger.framework */; };
+		531B3D0E1E697FD800AE596E /* AlamofireNetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531B3D0D1E697FD800AE596E /* AlamofireNetworkLogger.swift */; };
 		53AF98521E697D69002A1D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AF98511E697D69002A1D3A /* AppDelegate.swift */; };
 		53AF98541E697D69002A1D3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AF98531E697D69002A1D3A /* ViewController.swift */; };
 		53AF98571E697D69002A1D3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53AF98551E697D69002A1D3A /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		531B3D0D1E697FD800AE596E /* AlamofireNetworkLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkLogger.swift; sourceTree = "<group>"; };
 		53AF984E1E697D69002A1D3A /* AlamofireNetworkLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlamofireNetworkLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53AF98511E697D69002A1D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53AF98531E697D69002A1D3A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,9 +59,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		531B3D0C1E697FD800AE596E /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				531B3D0D1E697FD800AE596E /* AlamofireNetworkLogger.swift */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
 		53AF98451E697D69002A1D3A = {
 			isa = PBXGroup;
 			children = (
+				531B3D0C1E697FD800AE596E /* Class */,
 				53AF98501E697D69002A1D3A /* AlamofireNetworkLogger */,
 				53AF984F1E697D69002A1D3A /* Products */,
 				153305AA5DCE1C42E3FDE312 /* Pods */,
@@ -213,6 +224,7 @@
 			files = (
 				53AF98541E697D69002A1D3A /* ViewController.swift in Sources */,
 				53AF98521E697D69002A1D3A /* AppDelegate.swift in Sources */,
+				531B3D0E1E697FD800AE596E /* AlamofireNetworkLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
