@@ -7,6 +7,11 @@
 
 Network Logger for Alamofire
 
+# Requirements
+- iOS 9.0+ / macOS 10.11+ / tvOS 9.0+ / watchOS 2.0+
+- Swift 3.0+
+- [Alamofire 4.0+](https://github.com/Alamofire/Alamofire)
+
 # Podfile
 To integrate AlamofireNetworkLogger into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
