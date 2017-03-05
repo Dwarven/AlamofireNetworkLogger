@@ -174,7 +174,7 @@ public class AlamofireNetworkLogger {
             
             switch level {
             case .debug:
-                var log = String(format: "%d \'%@\' [%.04f]: %@ ", response.statusCode, requestURL.absoluteString, elapsedTime, response.allHeaderFields)
+                var log = String(format: "%d \'%@\' [%.04f s]: %@ ", response.statusCode, requestURL.absoluteString, elapsedTime, response.allHeaderFields)
                 
                 guard let data = sessionDelegate[task]?.delegate.data else { break }
                     
