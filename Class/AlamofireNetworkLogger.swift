@@ -27,6 +27,11 @@
 import Alamofire
 import Foundation
 
+protocol AlamofireNetworkLoggerDelegate {
+
+    func didLog(with log: String, level: AlamofireNetworkLoggerLevel)
+}
+
 /// The level of logging detail.
 public enum AlamofireNetworkLoggerLevel {
     /// Do not log requests or responses.
@@ -56,6 +61,8 @@ public class AlamofireNetworkLogger {
     public var filterPredicate: NSPredicate?
     
     private var startDates: [URLSessionTask: Date]
+
+    var delegate: AlamofireNetworkLoggerDelegate?
     
     // MARK: - Internal - Initialization
     
@@ -127,9 +134,9 @@ public class AlamofireNetworkLogger {
             if let httpBody = request.httpBody, let httpBodyString = String(data: httpBody, encoding: .utf8) {
                 log.append(httpBodyString)
             }
-            print(log)
+            self.log(with: log, level: level)
         case .info:
-            print("\(httpMethod) '\(requestURL.absoluteString)'")
+            self.log(with: "\(httpMethod) '\(requestURL.absoluteString)'", level: level)
         default:
             break
         }
@@ -162,8 +169,8 @@ public class AlamofireNetworkLogger {
             case .debug,
                  .info,
                  .error:
-                print("[Error] \(httpMethod) '\(requestURL.absoluteString)' [\(String(format: "%.04f", elapsedTime)) s]:")
-                print(error)
+                let log = "[Error] \(httpMethod) '\(requestURL.absoluteString)' [\(String(format: "%.04f", elapsedTime)) s]: Description: \(error.localizedDescription)"
+                self.log(with: log, level: level)
             default:
                 break
             }
@@ -190,12 +197,21 @@ public class AlamofireNetworkLogger {
                         log.append(string)
                     }
                 }
-                print(log)
+                self.log(with: log, level: .debug)
             case .info:
-                print("\(String(response.statusCode)) '\(requestURL.absoluteString)' [\(String(format: "%.04f", elapsedTime)) s]")
+                log(with: "\(String(response.statusCode)) '\(requestURL.absoluteString)' [\(String(format: "%.04f", elapsedTime)) s]", level: .info)
             default:
                 break
             }
         }
+    }
+
+    private func log(with log: String, level: AlamofireNetworkLoggerLevel) {
+
+        guard let delegate = delegate else {
+            return print(log)
+        }
+
+        delegate.didLog(with: log, level: level)
     }
 }
