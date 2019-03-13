@@ -27,7 +27,7 @@
 import Alamofire
 import Foundation
 
-protocol AlamofireNetworkLoggerDelegate {
+public protocol AlamofireNetworkLoggerDelegate {
 
     func didLog(with log: String, level: AlamofireNetworkLoggerLevel)
 }
@@ -62,7 +62,7 @@ public class AlamofireNetworkLogger {
     
     private var startDates: [URLSessionTask: Date]
 
-    var delegate: AlamofireNetworkLoggerDelegate?
+    public var delegate: AlamofireNetworkLoggerDelegate?
     
     // MARK: - Internal - Initialization
     
